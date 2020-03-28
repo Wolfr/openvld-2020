@@ -1,0 +1,995 @@
+/* ==========================================================================
+  Stylesheet for Christian Leysen website
+  Code & design by: Johan Ronsse
+  https://johanronsse.be
+  v4.2.1
+   ========================================================================== */
+/* Fonts
+   ========================================================================== */
+@font-face {
+  font-family: "Gilroy";
+  src: url("../fonts/Gilroy-Extrabold.eot");
+  src: url("../fonts/Gilroy-Extrabold.eot?#iefix") format("embedded-opentype"), url("../fonts/Gilroy-Extrabold.woff2") format("woff2"), url("../fonts/Gilroy-Extrabold.woff") format("woff"), url("../fonts/Gilroy-Extrabold.ttf") format("truetype");
+  font-weight: 800;
+  font-style: bold;
+}
+@font-face {
+  font-family: "Montserrat";
+  font-weight: 400;
+  font-style: normal;
+  src: url("../fonts/Montserrat-Regular.eot");
+  src: url("../fonts/Montserrat-Regular.eot?#iefix") format("embedded-opentype"), url("../fonts/Montserrat-Regular.woff2") format("woff2"), url("../fonts/Montserrat-Regular.woff") format("woff");
+}
+@font-face {
+  font-family: "Montserrat";
+  font-weight: 600;
+  font-style: normal;
+  src: url("../fonts/Montserrat-Medium.eot");
+  src: url("../fonts/Montserrat-Medium.eot?#iefix") format("embedded-opentype"), url("../fonts/Montserrat-Medium.woff2") format("woff2"), url("../fonts/Montserrat-Medium.woff") format("woff");
+}
+@font-face {
+  font-family: "Montserrat";
+  font-weight: 400;
+  font-style: italic;
+  src: url("../fonts/Montserrat-Italic.eot");
+  src: url("../fonts/Montserrat-Italic.eot?#iefix") format("embedded-opentype"), url("../fonts/Montserrat-Italic.woff2") format("woff2"), url("../fonts/Montserrat-Italic.woff") format("woff");
+}
+/* Variables
+   ========================================================================== */
+/* Reset some basics
+   ========================================================================== */
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+h1, h2, h3, h4, ul, ol {
+  padding: 0;
+  margin: 0;
+}
+
+input[type=submit],
+input[type=button],
+button {
+  border: none;
+}
+
+/* Set up some basic type
+   ========================================================================== */
+html {
+  font-size: 54.6875%;
+}
+
+@media (min-width: 56.25em) {
+  html {
+    font-size: 62.5%;
+  }
+}
+@media (min-width: 87.5em) {
+  html {
+    font-size: 70.3125%;
+  }
+}
+@media (min-width: 125em) {
+  html {
+    font-size: 78.125%;
+  }
+}
+body {
+  font-size: 1.6rem;
+  font-family: "Montserrat", Helvetica, Arial, sans-serif;
+  color: #181A1C;
+  background: #FFF;
+  line-height: 1.7;
+}
+
+input,
+textarea,
+select {
+  font-family: "Montserrat", Helvetica, Arial, sans-serif;
+  font-size: 1.6rem;
+}
+
+/* Buttons and inputs (interrelated)
+   ========================================================================== */
+.c-button,
+input[type=button] {
+  font-family: "Montserrat", Helvetica, Arial, sans-serif;
+  display: inline-block;
+  padding: 0.8rem 1.6rem;
+  font-size: 1.6rem;
+}
+
+a.c-button {
+  text-decoration: none;
+}
+
+input[type=text],
+input[type=email],
+input[type=password],
+input[type=tel],
+textarea {
+  border: 0.1rem solid #AAA;
+  border-radius: 0.3rem;
+  padding: 0.8rem 1rem;
+}
+
+.c-button--primary,
+input[type=button] {
+  background: #005DAA;
+  color: #FFF;
+}
+
+.c-button--secondary {
+  border: 0.2rem solid #005DAA;
+  color: #005DAA;
+  background: transparent;
+}
+
+.c-button--secondary:hover {
+  background: rgba(0, 108, 198, 0.1);
+  transition: 0.18s ease-in background;
+}
+
+.c-button.c-button--inverse {
+  border: 0.2rem solid #FFF;
+  color: #FFF;
+  background: transparent;
+}
+
+.c-button-group .c-button {
+  margin-right: 0.8rem;
+}
+.c-button-group .c-button:last-child {
+  margin-right: 0;
+}
+
+/* Grid parts
+   ========================================================================== */
+/* General */
+.c-header {
+  grid-area: header;
+}
+
+.c-main {
+  grid-area: main;
+}
+
+.c-footer {
+  grid-area: footer;
+}
+
+/* Simple page */
+.c-basic-page {
+  grid-area: basic-page;
+}
+
+/* Home page */
+.c-asides {
+  grid-area: asides;
+}
+
+.c-hero {
+  grid-area: hero;
+}
+
+.c-why {
+  grid-area: why;
+}
+
+.c-who {
+  grid-area: who;
+}
+
+.c-asides {
+  grid-area: asides;
+}
+
+.c-content-ad {
+  grid-area: content-ad;
+}
+
+.c-voting-instructions {
+  grid-area: voting-instructions;
+}
+
+.c-campaign-video {
+  grid-area: campaign-video;
+}
+
+.c-better {
+  grid-area: better;
+}
+
+.c-home-articles-list {
+  grid-area: home-articles;
+}
+
+@media (min-width: 56.25em) {
+  body {
+    display: grid;
+    margin: 2rem 0;
+    grid-gap: 2rem;
+    grid-template-columns: [full-start] minmax(2rem, 4rem) [main-start] 1fr [main-end] minmax(2em, 4rem) [full-end];
+    grid-template-areas: ". header ." ". main   ." ". asides ." ". footer .";
+  }
+
+  .c-main, .c-header, .c-footer {
+    grid-column: 2;
+  }
+}
+@media (min-width: 56.25em) {
+  .c-main {
+    grid-column: full;
+    display: grid;
+    grid-gap: 4rem;
+    grid-template-columns: minmax(2rem, 4rem) repeat(6, 1fr) minmax(2rem, 4rem);
+  }
+}
+@media (min-width: 56.25em) {
+  .c-main {
+    grid-template-areas: ". . basic-page basic-page basic-page basic-page . . ";
+  }
+}
+@media (min-width: 56.25em) {
+  .c-main--home {
+    justify-content: center;
+    grid-template-areas: "hero     hero             hero            hero              hero                     hero                    hero                       hero  " ".        home-articles    home-articles   home-articles     home-articles            home-articles           home-articles              .     ";
+  }
+}
+/* ==========================================================================
+  Logo
+   ========================================================================== */
+.c-logo h1,
+.c-logo .c-site-title {
+  display: flex;
+  align-items: center;
+  font-size: 3.2rem;
+}
+.c-logo h1 span,
+.c-logo .c-site-title span {
+  margin-top: 1rem;
+}
+
+.c-logo a {
+  font-family: "Gilroy", Futura, Helvetica, Arial, sans-serif;
+  color: #009DDC;
+  font-weight: 700;
+  text-decoration: none;
+  display: block;
+}
+
+.c-logo {
+  width: 24rem;
+}
+
+@media (min-width: 56.25em) {
+  .c-logo {
+    width: auto;
+  }
+}
+/* ==========================================================================
+  Nav
+   ========================================================================== */
+@media (min-width: 78.125em) {
+  .c-nav-logo-holder {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+.c-nav li {
+  display: inline-block;
+  margin-right: 0.5rem;
+}
+.c-nav li:last-child {
+  margin: 0;
+}
+
+.c-nav a {
+  margin-right: 0.5rem;
+  text-decoration: none;
+  color: #009DDC;
+  display: block;
+  padding: 1rem 0.5rem;
+  border-bottom: 0.2rem solid transparent;
+}
+
+.c-nav a:hover,
+.c-nav a:active,
+.c-nav a:focus {
+  border-color: #009DDC;
+  transition: 0.18s all ease-in;
+}
+
+.c-nav img {
+  position: relative;
+  top: 0.4rem;
+}
+
+.current-menu-item a {
+  color: #000;
+  border-bottom: 0.2rem solid #000;
+}
+
+.current-menu-item a:hover,
+.current-menu-item a:active,
+.current-menu-item a:focus {
+  border-color: #000;
+}
+
+.c-header {
+  border-bottom: 0.1rem solid #CCC;
+  padding: 2rem;
+}
+
+.c-header--home {
+  border: none;
+  background: #005DAA;
+}
+
+.c-header--home a {
+  color: #FFF;
+}
+
+.c-header--home .current-menu-item a {
+  border-bottom: 0.2rem solid #FFF;
+}
+
+.c-header--home .c-nav a:hover,
+.c-header--home .c-nav a:active,
+.c-header--home .c-nav a:focus {
+  border-color: #FFF;
+}
+
+.c-header--home .c-nav-icon {
+  opacity: 0.75;
+}
+
+.c-header--home .c-nav-icon:hover {
+  opacity: 1;
+}
+
+/* ==========================================================================
+  Hero
+   ========================================================================== */
+.c-hero {
+  padding: 5.6rem 2.4rem;
+  background: #005DAA;
+  background: linear-gradient(#005DAA, #00579E);
+}
+
+@media (min-width: 56.25em) {
+  .c-hero {
+    padding: 5.6rem 0;
+    display: grid;
+    grid-gap: 4rem;
+    grid-template-columns: minmax(2rem, 4rem) repeat(6, 1fr) minmax(2rem, 4rem);
+  }
+
+  .c-hero__content {
+    grid-column-start: 2;
+    grid-column-end: 5;
+    align-self: center;
+  }
+
+  .c-hero__img {
+    grid-column-start: 5;
+    grid-column-end: 8;
+  }
+}
+.c-hero img {
+  box-shadow: 0 0 1.2rem 0 rgba(0, 0, 0, 0.35);
+  border: 1.2rem solid #FFF;
+  transform: rotate(2deg);
+  max-width: 75%;
+  margin: 0 auto;
+}
+@media (min-width: 56.25em) {
+  .c-hero img {
+    max-width: auto;
+    position: relative;
+    left: 10%;
+  }
+}
+
+.c-hero__content p {
+  margin: 2rem 0;
+}
+
+.c-hero__content p {
+  font-size: 2.3rem;
+  font-family: "Gilroy", Futura, Helvetica, Arial, sans-serif;
+  font-weight: 800;
+  color: #FFF;
+  opacity: 0.5;
+}
+
+.c-hero__img img {
+  margin: 0 auto;
+  display: block;
+  margin-top: 2rem;
+}
+@media (min-width: 56.25em) {
+  .c-hero__img img {
+    margin-top: 0;
+  }
+}
+
+.c-hero__img p {
+  color: #FFF;
+  text-align: center;
+  opacity: 0.5;
+}
+
+.c-hero span {
+  opacity: 0.5;
+}
+
+.c-hero h2 {
+  word-wrap: break-word;
+  margin: 4rem 0 0;
+  font-family: "Gilroy", Futura, Helvetica, Arial, sans-serif;
+  font-weight: 800;
+  text-transform: lowercase;
+  font-size: 250%;
+  line-height: 1.1;
+  color: #FFF;
+}
+
+@media (min-width: 56.25em) {
+  .c-hero h2 {
+    line-height: 0.9;
+    font-size: 390%;
+  }
+}
+/* ==========================================================================
+  c-content
+   ========================================================================== */
+.c-content ul {
+  list-style: disc;
+  padding: 0 0 0 4rem;
+}
+
+.c-a,
+.c-content a {
+  color: #005DAA;
+}
+
+.c-a--swap-underlines {
+  text-decoration: none;
+}
+
+.c-a--swap-underlines:hover {
+  text-decoration: underline;
+}
+
+.c-content blockquote p {
+  font-style: italic;
+}
+
+.c-content blockquote cite {
+  text-transform: uppercase;
+  font-style: normal;
+  font-size: 90%;
+  letter-spacing: 0.1rem;
+}
+
+/* h1 */
+.c-h1,
+.c-content h1,
+.c-content.c-content--heading-shifted-1-level h2 {
+  color: #005DAA;
+  margin: 4rem 0;
+  font-size: 4.2rem;
+  line-height: 1.1;
+  font-family: "Gilroy", Futura, Helvetica, Arial, sans-serif;
+  font-weight: 800;
+}
+
+.c-h1-multiline {
+  font-family: "Gilroy", Futura, Helvetica, Arial, sans-serif;
+  color: #002848;
+  line-height: 1.5;
+  font-size: 2.7rem;
+}
+
+.c-h1-multiline span {
+  opacity: 1;
+  color: #005DAA;
+  font-size: 4.2rem;
+  font-weight: 800;
+  display: block;
+}
+
+/* h2 */
+.c-h2,
+.c-content h2,
+.c-content.c-content--heading-shifted-1-level h3 {
+  color: #002848;
+  margin: 2rem 0;
+  font-size: 3.4rem;
+  line-height: 1.1;
+  font-family: "Gilroy", Futura, Helvetica, Arial, sans-serif;
+  font-weight: 800;
+}
+
+/* h3 */
+.c-h3,
+.c-content h3,
+.c-content.c-content--heading-shifted-1-level h4 {
+  color: #002848;
+  margin: 2rem 0;
+  font-size: 2.4rem;
+  line-height: 1.1;
+  font-family: "Gilroy", Futura, Helvetica, Arial, sans-serif;
+  font-weight: 800;
+}
+
+.c-pullquote {
+  color: #002848;
+  margin: 2rem 0;
+  font-size: 2.4rem;
+  line-height: 1.1;
+  font-family: "Gilroy", Futura, Helvetica, Arial, sans-serif;
+  font-weight: 800;
+}
+
+/* h4 */
+/* to do if necessary */
+/* ==========================================================================
+  footer
+   ========================================================================== */
+.c-footer {
+  padding: 2.4rem 0;
+  border-top: 0.1rem solid #CCC;
+}
+
+.c-footer ul {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 1rem;
+}
+
+.c-footer li {
+  margin: 0.5rem 1rem;
+}
+
+.c-footer a {
+  color: #999;
+  display: inline-flex;
+}
+
+.c-footer .c-nav-icon img {
+  margin-right: 0.5rem;
+}
+
+/* ==========================================================================
+  Content ad
+   ========================================================================== */
+.c-content-ad {
+  background: #006CC6;
+  padding: 2.4rem;
+  display: flex;
+  align-items: center;
+}
+
+.c-content-ad-text {
+  flex: 2 1 auto;
+}
+
+.c-content-ad-image {
+  flex: 1 1 40rem;
+}
+
+.c-content-ad img {
+  border: 0.7rem solid #FFF;
+  box-shadow: 0 0 0.4rem rgba(0, 0, 0, 0.25);
+  position: relative;
+  right: -10%;
+  top: -10%;
+  transform: rotate(7.5deg) scale(1.15);
+}
+
+.c-content-ad-image:hover img {
+  transition: ease-in all 0.25s;
+  transform: rotate(9.5deg) scale(1.25);
+}
+
+.c-content-ad h3 {
+  font-size: 3rem;
+  line-height: 1.1;
+  font-family: "Gilroy", Futura, Helvetica, Arial, sans-serif;
+  font-weight: 800;
+  color: #FFF;
+  margin: 0 0 1.2rem;
+}
+
+.c-content-ad p {
+  color: #FFF;
+}
+
+/* Utility classes
+   ========================================================================== */
+.u-uc {
+  text-transform: uppercase;
+}
+
+/* Intro
+   ========================================================================== */
+.c-intro {
+  font-size: 130%;
+}
+
+/* c-social-list
+   ========================================================================== */
+.c-social-list {
+  display: flex;
+}
+
+.c-social-list li {
+  margin-right: 1.8rem;
+}
+
+.c-social-list a {
+  color: #009DDC;
+  text-decoration: none;
+}
+
+.c-social-list img {
+  position: relative;
+  top: 0.4rem;
+}
+
+/* c-article-list
+   ========================================================================== */
+.c-article-list li {
+  margin: 4rem 0;
+  padding: 0 0 4rem;
+  border-bottom: 0.1rem solid #CCC;
+}
+
+.c-article-list li:last-child {
+  border: none;
+}
+
+.c-article-list a {
+  color: #005DAA;
+}
+
+.c-article-list h2 {
+  color: #002848;
+  margin: 2rem 0;
+  font-size: 3.2rem;
+  line-height: 1.1;
+  font-family: "Gilroy", Futura, Helvetica, Arial, sans-serif;
+  font-weight: 800;
+}
+
+.c-article-list h2 a {
+  text-decoration: none;
+}
+
+/* c-home-articles-list
+   ========================================================================== */
+.c-home-articles-list {
+  padding: 2.4rem;
+}
+
+@media (min-width: 56.25em) {
+  .c-home-articles-list {
+    padding: 0;
+  }
+}
+.c-asides {
+  padding: 2rem 2rem 4rem;
+  border-top: 0.1rem solid #CCC;
+}
+@media (min-width: 56.25em) {
+  .c-asides {
+    padding: 2rem 0 4rem;
+  }
+}
+
+/* c-articles-columns-list
+   ========================================================================== */
+.c-articles-columns-list li {
+  margin: 0 0 4rem;
+}
+
+@media (min-width: 56.25em) {
+  .c-articles-columns-list {
+    columns: 2;
+    column-gap: 4rem;
+  }
+
+  .c-articles-columns-list li {
+    break-inside: avoid;
+    margin: 0 0 4rem;
+  }
+}
+.c-articles-columns-list h4 {
+  margin: 0 0 2rem;
+  font-size: 2.4rem;
+  line-height: 1.1;
+  font-family: "Gilroy", Futura, Helvetica, Arial, sans-serif;
+  font-weight: 800;
+}
+
+.c-articles-columns-list h4 a {
+  color: #005DAA;
+  text-decoration: none;
+}
+
+/* Single article
+   ========================================================================== */
+.c-single-article header {
+  margin: 0 0 4rem;
+}
+
+.c-single-article > .c-content {
+  margin-bottom: 4rem;
+}
+
+.c-single-article header h1 {
+  line-height: 1.1;
+  font-family: "Gilroy", Futura, Helvetica, Arial, sans-serif;
+  font-weight: 800;
+  font-size: 3.2rem;
+  color: #005DAA;
+}
+
+@media (min-width: 56.25em) {
+  .c-single-article header h1 {
+    font-size: 3.7rem;
+  }
+}
+.c-single-article header p {
+  color: #666;
+}
+
+.c-single-article footer {
+  background: #EBF4FB;
+}
+
+/* Basic page
+   ========================================================================== */
+.c-basic-page {
+  margin: 2rem;
+}
+
+@media (min-width: 56.25em) {
+  .c-basic-page {
+    margin: 4rem 0;
+  }
+}
+/* Breakpoint utilities
+   ========================================================================== */
+/* Inline-block */
+.bp3-ib-show {
+  display: none !important;
+}
+
+@media (min-width: 56.25em) {
+  .bp3-ib-show {
+    display: inline-block !important;
+  }
+}
+/* Inline */
+.bp3-inline-show {
+  display: none !important;
+}
+
+@media (min-width: 56.25em) {
+  .bp3-inline-show {
+    display: inline !important;
+  }
+}
+/* Block */
+.bp3-block-show {
+  display: none !important;
+}
+
+@media (min-width: 56.25em) {
+  .bp3-block-show {
+    display: block !important;
+  }
+}
+.bp3-ib-hide {
+  display: none !important;
+}
+
+@media (max-width: 56.25em) {
+  .bp3-ib-hide {
+    display: inline-block !important;
+  }
+}
+/* Inline */
+.bp3-inline-hide {
+  display: none !important;
+}
+
+@media (max-width: 56.25em) {
+  .bp3-inline-hide {
+    display: inline !important;
+  }
+}
+/* Block */
+.bp3-block-hide {
+  display: none !important;
+}
+
+@media (max-width: 56.25em) {
+  .bp3-block-hide {
+    display: block !important;
+  }
+}
+/* About the author
+   ========================================================================== */
+.c-about-author {
+  padding: 2.4rem;
+}
+
+.c-about-author-image {
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 56.25em) {
+  .c-about-author {
+    display: flex;
+  }
+
+  .c-about-author-image {
+    flex: 1 0 14rem;
+    margin-right: 2rem;
+  }
+}
+.c-about-author h3 {
+  margin-top: 0;
+}
+
+/* Header fixed
+   ========================================================================== */
+.c-header-fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  background: #FFF;
+  padding: 0.8rem 4.8rem;
+  z-index: 1;
+  transform: translateY(-200%);
+}
+
+.c-header-fixed .c-logo {
+  width: 22rem;
+}
+
+.c-header-fixed {
+  transition: transform 0.5s;
+}
+
+.c-header-fixed.is-visible {
+  transform: translateY(0);
+  box-shadow: 0 0 4rem rgba(0, 0, 0, 0.25);
+}
+
+/* Page header
+   ========================================================================== */
+.c-page-header {
+  margin: 4rem 0;
+}
+
+/* Improvement to work around lack of CSS grid layout for IE11
+   ========================================================================== */
+html {
+  padding: 2rem 4rem;
+}
+
+@supports (display: grid) {
+  html {
+    padding: 0;
+  }
+
+  .c-bg {
+    content: " ";
+    display: block;
+    background: #005DAA;
+    /* IE11 */
+    background: #005DAA;
+    z-index: -1;
+    width: 100%;
+    height: 18rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
+/* Videos
+   ========================================================================== */
+.c-video-wrapper,
+.wp-block-embed.is-type-video {
+  position: relative;
+  padding-bottom: 43%;
+  height: 0;
+  margin: 2rem 0;
+}
+.c-video-wrapper.aspect-3-2, .c-video-wrapper.wp-embed-aspect-3-2,
+.wp-block-embed.is-type-video.aspect-3-2,
+.wp-block-embed.is-type-video.wp-embed-aspect-3-2 {
+  padding-bottom: 66.67%;
+  /* 3:2 */
+}
+.c-video-wrapper.aspect-16-9, .c-video-wrapper.wp-embed-aspect-16-9,
+.wp-block-embed.is-type-video.aspect-16-9,
+.wp-block-embed.is-type-video.wp-embed-aspect-16-9 {
+  padding-bottom: 56.25%;
+  /* 16:9 */
+}
+
+.c-video-wrapper iframe,
+.wp-block-embed.is-type-video iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* About images
+   ========================================================================== */
+.c-about-images {
+  /* First image has 1,5 ratio */
+  /* Second image has 1,33 ratio */
+}
+.c-about-images img:first-child {
+  width: 45%;
+  margin: 0 1.5%;
+}
+.c-about-images img:last-child {
+  width: 45%;
+  margin: 0 1.5%;
+}
+
+/* hr
+   ========================================================================== */
+.c-hr {
+  margin: 2.4rem 0;
+  border-bottom: 0.1rem solid #CCC;
+}
+.c-hr hr {
+  display: none;
+}
+
+/* Wrangle with Gutenberg
+   ========================================================================== */
+.c-content .wp-block-quote {
+  margin: 2.4rem 0;
+}
+
+.c-content .wp-block-button__link {
+  border-radius: 0.4rem;
+  padding: 0.6rem 1.6rem;
+  background: #005DAA;
+  color: #FFF;
+}
+
+/*# sourceMappingURL=style.css.map */
