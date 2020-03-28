@@ -16,7 +16,9 @@ Note that all links to social media profiles link to the generic /username and h
 
 ## How to change the CSS
 
-To compile SCSS:
+The SCSS is a single stylesheet located in `/scss`.
+
+To compile SCSS, install Sass globally and watch the folder, then make a change:
 
     npm install -g sass
     sass --watch scss:css
